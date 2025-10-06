@@ -1,12 +1,9 @@
 <script setup></script>
 
 <template>
-  <h1>You did it!</h1>
-  <link href="/src/css/style.css" rel="stylesheet">
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+
+  <h1 class="text-Jorange font-monoton text-[80px] text-center">Hello!!</h1>
+
 </template>
 
 <style scoped></style>

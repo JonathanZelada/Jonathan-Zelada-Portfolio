@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import "tailwindcss";
+
+
+
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@theme {
+  --color-Jorange: #ED9F52;
+  --color-Jlack: #0E0E0E;
+  --color-Jhite: #D9D9D9;
+  --color-Jurple: #8839CD;
+  --color-Jed: #A94752;
+  --color-Jlue: #465987;
+  --color-Jightblue: #C0CCE7;
+  --color-Jink: #C0155D;
+  --color-Jyan: #3D9F90;
+  --color-Jarkred: #743737;
+  --color-Jold: #D0AC68;
+  --color-Jiscoblue: #01A9F0;
+  --color-Jiscoorange: #ED6E03;
+  --color-Jiscogreen: #70BE46;
+  --color-Jecho: #00C9FF;
+
+
+  --font-monoton: "Monoton", sans-serif;
+}
+
