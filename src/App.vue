@@ -54,7 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="" class="relative w-full min-h-screen mb-12">
+  <div ref="" class="relative w-full min-h-screen mb-60">
     <div
       v-if="showWelcomeOverlay"
       :style="{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }"
@@ -103,19 +103,78 @@ onMounted(() => {
         <img src="@/images/Nombre.svg" alt="Nombre" class="w-[80%] h-auto" />
 
         <!-- Texto debajo, ocupando poco espacio -->
-        <p class="mt-2 text-Jorange text-base md:text-lg text-center">Welcome to my portfolio</p>
+        <p class="mt-2 text-Jorange text-base font-jura font-bold text-xl text-center">
+          Welcome to my portfolio
+        </p>
       </div>
     </div>
 
     <div class="justify-items-center">
-      <h1 class="text-Jorange font-monoton text-center text-[75pt] mt-16">Hello!</h1>
+      <h1 class="text-Jorange font-monoton text-center text-[70pt] mt-20">Hello!</h1>
 
-      <h2 class="text-Jhite font-jura text-center text-[13pt] w-3/4">
+      <h2 class="text-Jhite font-jura font-bold text-center text-2xl w-5/6 mt-4">
         I am a 2nd-year high school student passionate about art, projects and helping others. I
         enjoy combining creativity with problem-solving, whether in academic, cultural, or community
         activities. I am developing soft and hard skills while learning how to connect creativity
         with social impact.
       </h2>
+
+      <div
+        class="flex flex-wrap items-center justify-center gap-2 text-4xl text-Jhite mt-20 font-jura font-semibold"
+      >
+        <h2>Turn risks into</h2>
+        <h2 class="bg-Jorange text-Jlack rounded-[15px] px-2 py-1 m-[2px]">opportunities</h2>
+        <h2>and opportunities into</h2>
+        <h2 class="text-Jorange underline">growth!</h2>
+      </div>
+
+      <div class="flex items-center justify-between pt-32 pr-10">
+        <!-- Imagen a la izquierda -->
+        <img src="@/images/Yo.svg" alt="Yo" class="h-[570px] object-contain" />
+
+        <!-- Bloque de texto a la derecha de mi foto -->
+        <div class="max-w-xl ml-12">
+          <h2 class="text-3xl font-jura font-bold text-Jhite mb-2">A little bit</h2>
+          <h2 class="text-7xl text-Jorange mb-6 font-monoton">About Me</h2>
+          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4">EDUCATION</h2>
+          <div class="flex items-center gap-4">
+            <img src="@/images/+.svg" alt="" class="object-contain" />
+            <p class="text-3xl font-jura font-bold text-Jhite">Citalá School (Scholarship)</p>
+          </div>
+          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15">General high school</h2>
+          <div class="flex items-center gap-4">
+            <img src="@/images/+.svg" alt="" class="object-contain" />
+            <p class="text-3xl font-jura font-bold text-Jhite">¡Supérate! Program (Scholarship)</p>
+          </div>
+          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15">
+            3 year extracurricular program
+          </h2>
+          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4 mt-8">SOFT SKILLS</h2>
+
+          <div class="grid grid-cols-2 gap-6 text-center font-jura font-bold">
+            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+              <p class="text-Jhite">Creativity & Innovation</p>
+            </div>
+
+            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+              <p class="text-Jhite">Adaptability </p>
+            </div>
+
+            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+              <p class="text-Jhite">Resilience</p>
+            </div>
+
+            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+              <p class="text-Jhite">Risk-taking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-Jorange font-monoton text-center text-[130pt] mt-20 tracking-wide">PR<span class="ml-0.5">O</span>JECTS</h1>
+      </div>
+
     </div>
   </div>
 </template>
