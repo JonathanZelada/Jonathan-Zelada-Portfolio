@@ -152,19 +152,19 @@ onMounted(() => {
           <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4 mt-8">SOFT SKILLS</h2>
 
           <div class="grid grid-cols-2 gap-6 text-center font-jura font-bold">
-            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
               <p class="text-Jhite">Creativity & Innovation</p>
             </div>
 
-            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
-              <p class="text-Jhite">Adaptability </p>
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
+              <p class="text-Jhite">Adaptability</p>
             </div>
 
-            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
               <p class="text-Jhite">Resilience</p>
             </div>
 
-            <div class="border-3 border-Jorange  rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
               <p class="text-Jhite">Risk-taking</p>
             </div>
           </div>
@@ -172,7 +172,74 @@ onMounted(() => {
       </div>
 
       <div>
-        <h1 class="text-Jorange font-monoton text-center text-[130pt] mt-20 tracking-wide">PR<span class="ml-0.5">O</span>JECTS</h1>
+        <h1 class="text-Jorange font-monoton text-center text-[130pt] mt-20 tracking-wide">
+          PR<span class="ml-0.5">O</span>JECTS
+        </h1>
+      </div>
+
+      <div class="flex items-center space-x-8 mt-25 mx-16">
+        <!-- Logo a la izquierda -->
+        <div class="w-2/4">
+          <img src="@/images/TrackMate.svg" alt="TrackMate logo" class="w-full" />
+        </div>
+
+        <!-- Textos a la derecha -->
+        <div class="flex flex-col justify-center text-right">
+          <h1 class="font-ubuntu text-8xl font-bold text-Jhite">TrackMate</h1>
+          <h2 class="font-jura text-2xl text-Jhite mt-2 ml-20">
+            A mobile app concept to manage vehicle maintenance. Features include locating
+            repairshops, keeping maintenance history, booking appointments, and mechanic–user
+            communication.
+          </h2>
+        </div>
+      </div>
+
+      <div>
+        <img src="@/images/TrackVideo.png" alt="" class="w-full h-full mt-25" />
+      </div>
+
+      <div class="flex justify-between items-center w-full mt-10 px-16">
+        <!-- Textos a la izquierda -->
+        <div class="w-1/2 space-y-4">
+          <!-- Título Contributions -->
+          <h1 class="font-jura text-Jurple text-4xl font-bold mt-10">Contributions</h1>
+
+          <!-- Lista de Contributions -->
+          <ul class="list-disc list-outside pl-8 space-y-2">
+            <li class="font-jura text-Jhite text-xl leading-relaxed">
+              Team Leader: Coordinated the group and managed<br />
+              the overall project development.
+            </li>
+            <li class="font-jura text-Jhite text-xl leading-relaxed">
+              Front-End Developer: Worked on the design and<br />
+              functionality of the user interface.
+            </li>
+          </ul>
+
+          <!-- Título Achievements -->
+          <h1 class="font-jura text-Jurple text-4xl font-bold mt-14">Achievements</h1>
+
+          <!-- Lista de Achievements -->
+          <ul class="list-disc list-outside pl-8 space-y-2">
+            <li class="font-jura text-Jhite text-xl leading-relaxed">
+              2nd Place – EXPOTECH 2025 Competition
+            </li>
+            <li class="font-jura text-Jhite text-xl leading-relaxed">Award for Best Programming</li>
+          </ul>
+        </div>
+
+        <!-- Imágenes a la derecha con superposición -->
+        <div class="w-1/2 relative flex justify-center items-center">
+          <!-- Phone (detrás) -->
+          <img src="@/images/phoneTrack.svg" alt="Phone" class="absolute -top-25 left-12 w-55" />
+
+          <!-- Laptop (encima) -->
+          <img src="@/images/laptopTrack.png" alt="Laptop" class="relative z-10 h-100 top-5" />
+        </div>
+      </div>
+
+      <div class="">
+        <img src="@/images/separador.svg" alt="" class="w-4/5 mx-auto mt-20">
       </div>
 
     </div>
