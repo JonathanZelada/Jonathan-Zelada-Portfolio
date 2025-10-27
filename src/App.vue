@@ -239,9 +239,29 @@ onMounted(() => {
       </div>
 
       <div class="">
-        <img src="@/images/separador.svg" alt="" class="w-4/5 mx-auto mt-20">
+        <img src="@/images/separador.svg" alt="" class="w-4/5 mx-auto mt-20" />
       </div>
 
+      <div class="relative w-full">
+        <!-- Imagen -->
+        <img src="@/images/Libros.svg" alt="" class="w-2/5 mx-40 mt-20 relative" />
+
+        <!-- Texto sobrepuesto (arriba de la imagen) -->
+        <div
+          class="absolute top-5 right-1 mr-32 transform -translate-x-1 flex flex-col items-center z-10 space-y-2"
+        >
+          <h1 class="font-abhaya text-7xl leading-none">
+            <span class="text-Jhite">"</span>
+            <span class="text-Jed">Relatos</span>
+            <span class="text-Jhite"> tenebrosos</span>
+            <span class="text-Jed">"</span>
+          </h1>
+          <h1 class="font-jura text-3xl text-Jlue mb-12">Interior book design</h1>
+          <h1 class="font-jura text-xl text-Jhite text-right mb-16">“Relatos Tenebrosos” is a book that contains a collection of <br> eerie short stories written by Salvadoran author <br> Mario Martínez.</h1>
+          <h1 class="font-abhaya text-5xl text-Jed text-right m">Contribution</h1>
+        </div>
+      </div>
+      
     </div>
   </div>
 </template>
