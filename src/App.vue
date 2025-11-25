@@ -415,7 +415,7 @@
     <!-- Contenedor para imagen tentiz + textos a la derecha -->
     <div class="relative -mt-190 overflow-visible">
       <!-- imagen tentiz -->
-      <img src="@/images/tentiz.svg " alt="" class="reveal fade-left" />
+      <img src="@/images/Tentiz.svg " alt="" class="reveal fade-left" />
 
       <!-- textos centrados pero posicionados a la derecha -->
       <div class="absolute right-0 top-[70%] w-[35%] text-center mr-50">
