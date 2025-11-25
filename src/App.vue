@@ -1,118 +1,25 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const rootElement = ref(null)
-const showWelcomeOverlay = ref(true) // Controla la visibilidad total del contenedor (incluyendo la opacidad y blur)
-const showOverlayContent = ref(true) // Controla la visibilidad del texto y botones (el "pop-up")
-const overlayOpacity = ref(0.9)
-const isFullscreen = ref(false)
-
-function requestFullscreen() {
-  // Aplicamos Fullscreen al elemento raíz de la página (<html>)
-  const el = document.documentElement
-  if (el) {
-    const requestMethod =
-      el.requestFullscreen ||
-      el.mozRequestFullScreen ||
-      el.webkitRequestFullscreen ||
-      el.msRequestFullscreen
-    if (requestMethod) {
-      requestMethod.call(el)
-      isFullscreen.value = true
-    }
-  }
-}
-
-/**
- * Función que maneja el clic del usuario.
- * @param {boolean} shouldEnterFullscreen - Indica si se debe intentar entrar en Fullscreen.
- */
-function dismissOverlay(shouldEnterFullscreen) {
-  // 1. **Ocultar inmediatamente el "pop-up" (texto y botones).**
-  showOverlayContent.value = false
-
-  // 2. Aplicar Fullscreen si el usuario lo pidió.
-  if (shouldEnterFullscreen) {
-    requestFullscreen()
-  }
-
-  // 3. Iniciar la animación de desvanecimiento del fondo negro.
-  overlayOpacity.value = 0
-
-  // 4. Ocultar completamente el contenedor de bienvenida después de la transición de CSS (1 segundo).
-  setTimeout(() => {
-    showWelcomeOverlay.value = false
-  }, 1000) // El tiempo debe coincidir con la duración de la transición CSS (duration-1000)
-}
-
-onMounted(() => {
-  // Escuchar el evento de cambio de Fullscreen para mantener el estado
-  document.addEventListener('fullscreenchange', () => {
-    isFullscreen.value = !!document.fullscreenElement
-  })
-})
-</script>
-
 <template>
   <div ref="" class="relative w-full min-h-screen mb-60">
-    <div
-      v-if="showWelcomeOverlay"
-      :style="{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }"
-      class="fixed inset-0 flex flex-col items-center justify-center transition-all duration-1000 z-50 p-4"
-    >
-      <Transition name="fade-pop-up">
-        <div
-          v-if="showOverlayContent"
-          class="text-center p-8 rounded-lg max-w-lg shadow-2xl bg-transparent transition-opacity duration-300"
-        >
-          <p class="text-Jorange text-[34pt] mb-6 font-monoton">Welcome To My Portfolio</p>
-          <p class="text-gray-100 text-lg mb-8">
-            This content is designed to be viewed in full screen and to provide the best visual
-            experience.
-            <span class="block mt-2 font-light">
-              You can exit at any time by pressing the "Esc" key.
-            </span>
-          </p>
-
-          <div class="flex justify-center space-x-4">
-            <button
-              @click="dismissOverlay(true)"
-              class="bg-Jorange hover:bg-Jorange/30 text-Jlack font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Yes, Full Screen
-            </button>
-
-            <button
-              @click="dismissOverlay(false)"
-              class="bg-transparent border border-white text-white font-bold py-3 px-6 rounded-full transition duration-300 hover:bg-white/10"
-            >
-              No, Continue
-            </button>
-          </div>
-        </div>
-      </Transition>
-    </div>
-
-    <div class="relative w-full min-h-screen">
+    <div class="relative w-full">
       <!-- Imagen de fondo -->
-      <img src="@/images/OrangeBG.svg" alt="Fondo" class="w-full h-full object-cover" />
+      <img src="@/images/OrangeBG.png" alt="Fondo" class="w-full h-full object-cover" />
 
       <!-- Contenedor de imagen 2 + texto -->
       <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
         <!-- Imagen encima ocupando 80% del contenedor -->
-        <img src="@/images/Nombre.svg" alt="Nombre" class="w-[80%] h-auto" />
+        <img src="@/images/Nombre.svg" alt="Nombre" class="w-[60%]" />
 
         <!-- Texto debajo, ocupando poco espacio -->
-        <p class="mt-2 text-Jorange text-base font-jura font-bold text-xl text-center">
+        <p class="mt-8 text-Jorange font-jura font-bold text-5xl text-center">
           Welcome to my portfolio
         </p>
       </div>
     </div>
 
     <div class="justify-items-center">
-      <h1 class="text-Jorange font-monoton text-center text-[70pt] mt-20">Hello!</h1>
+      <h1 class="reveal zoom-in text-Jorange font-monoton text-center text-[70pt] mt-70">Hello!</h1>
 
-      <h2 class="text-Jhite font-jura font-bold text-center text-2xl w-5/6 mt-4">
+      <h2 class="reveal fade-up text-Jhite font-jura font-bold text-center text-2xl w-5/6 mt-4">
         I am a 2nd-year high school student passionate about art, projects and helping others. I
         enjoy combining creativity with problem-solving, whether in academic, cultural, or community
         activities. I am developing soft and hard skills while learning how to connect creativity
@@ -120,7 +27,7 @@ onMounted(() => {
       </h2>
 
       <div
-        class="flex flex-wrap items-center justify-center gap-2 text-4xl text-Jhite mt-20 font-jura font-semibold"
+        class="reveal zoom-in  flex flex-wrap items-center justify-center gap-2 text-4xl text-Jhite mt-20 mb-60 font-jura font-semibold"
       >
         <h2>Turn risks into</h2>
         <h2 class="bg-Jorange text-Jlack rounded-[15px] px-2 py-1 m-[2px]">opportunities</h2>
@@ -128,63 +35,91 @@ onMounted(() => {
         <h2 class="text-Jorange underline">growth!</h2>
       </div>
 
-      <div class="flex items-center justify-between pt-32 pr-10">
+      <div class="flex justify-between pt-32 relative ">
+        <!-- Imagen decorativa izquierda -->
+        <img
+          src="@/images/visuals2.svg"
+          alt=""
+          class="absolute -left-110 top-1/2 transform -translate-y-1/2 object-contain reveal fade-left "
+        />
+
         <!-- Imagen a la izquierda -->
-        <img src="@/images/Yo.svg" alt="Yo" class="h-[570px] object-contain" />
+        <img src="@/images/Yo.svg" alt="Yo" class="h-[500px] object-contain mr-10 z-10 reveal blur-in stagger"/>
 
         <!-- Bloque de texto a la derecha de mi foto -->
-        <div class="max-w-xl ml-12">
-          <h2 class="text-3xl font-jura font-bold text-Jhite mb-2">A little bit</h2>
-          <h2 class="text-7xl text-Jorange mb-6 font-monoton">About Me</h2>
-          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4">EDUCATION</h2>
-          <div class="flex items-center gap-4">
+        <div class="max-w-xl ml-12 z-10">
+          <h2 class="text-3xl font-jura font-bold text-Jhite mb-2 reveal fade-left">A little bit</h2>
+          <h2 class="text-7xl text-Jorange mb-6 font-monoton reveal fade-right">About Me</h2>
+          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4 reveal zoom-out">EDUCATION</h2>
+          <div class="flex items-center gap-4 reveal fade-left">
             <img src="@/images/+.svg" alt="" class="object-contain" />
             <p class="text-3xl font-jura font-bold text-Jhite">Citalá School (Scholarship)</p>
           </div>
-          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15">General high school</h2>
-          <div class="flex items-center gap-4">
+          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15 reveal fade-left">General high school</h2>
+          <div class="flex items-center gap-4 reveal fade-left">
             <img src="@/images/+.svg" alt="" class="object-contain" />
             <p class="text-3xl font-jura font-bold text-Jhite">¡Supérate! Program (Scholarship)</p>
           </div>
-          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15">
+          <h2 class="text-3xl text-white opacity-45 font-jura mb-3 ml-15 reveal fade-left">
             3 year extracurricular program
           </h2>
-          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4 mt-8">SOFT SKILLS</h2>
+          <h2 class="text-3xl text-Jyan font-jura font-semibold mb-4 mt-8 reveal zoom-out">SOFT SKILLS</h2>
 
           <div class="grid grid-cols-2 gap-6 text-center font-jura font-bold">
-            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md reveal fade-left">
               <p class="text-Jhite">Creativity & Innovation</p>
             </div>
 
-            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md reveal fade-left">
               <p class="text-Jhite">Adaptability</p>
             </div>
 
-            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md reveal fade-right">
               <p class="text-Jhite">Resilience</p>
             </div>
 
-            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md">
+            <div class="border-3 border-Jorange rounded-xl p-2 shadow-md reveal fade-right">
               <p class="text-Jhite">Risk-taking</p>
             </div>
           </div>
         </div>
-      </div>
 
+        <!-- Imagen decorativa derecha -->
+        <img
+          src="@/images/visuals1.svg"
+          alt=""
+          class="absolute -right-110 top-1/2 transform -translate-y-1/2 object-contain reveal fade-right"
+        />
+      </div>
+      <img
+        src="@/images/lines.svg"
+        alt=""
+        class="absolute -left-50 mt-110 transform object-contain h-200 reveal fade-left"
+      />
+      <img
+        src="@/images/lines2.svg"
+        alt=""
+        class="absolute -right-70 mt-140 transform object-contain h-220 reveal fade-right"
+      />
+      <img
+        src="@/images/My.svg"
+        alt=""
+        class="absolute mt-140 transform object-contain h-30 pl-150 reveal fade-left"
+      />
       <div>
-        <h1 class="text-Jorange font-monoton text-center text-[130pt] mt-20 tracking-wide">
+        <h1 class="text-Jorange font-monoton text-center text-[130pt] mt-170 tracking-wide reveal blur-in">
           PR<span class="ml-0.5">O</span>JECTS
         </h1>
       </div>
 
-      <div class="flex items-center space-x-8 mt-25 mx-16">
+      <div class="flex items-center space-x-8 mt-140 mx-16">
         <!-- Logo a la izquierda -->
         <div class="w-2/4">
-          <img src="@/images/TrackMate.svg" alt="TrackMate logo" class="w-full" />
+          <img src="@/images/TrackMate.svg" alt="TrackMate logo" class="h-90 pl-50" />
         </div>
 
         <!-- Textos a la derecha -->
-        <div class="flex flex-col justify-center text-right">
+        <div class="flex flex-col justify-center text-right pr-50">
           <h1 class="font-ubuntu text-8xl font-bold text-Jhite">TrackMate</h1>
           <h2 class="font-jura text-2xl text-Jhite mt-2 ml-20">
             A mobile app concept to manage vehicle maintenance. Features include locating
@@ -194,10 +129,16 @@ onMounted(() => {
         </div>
       </div>
 
-      <div>
-        <img src="@/images/TrackVideo.png" alt="" class="w-full h-full mt-25" />
+      <div class="w-full h-full overflow-hidden relative rounded-xl mt-25">
+        <video
+          :src="videos[currentVideo]"
+          class="w-full h-full object-cover"
+          autoplay
+          muted
+          playsinline
+          @ended="nextVideo"
+        ></video>
       </div>
-
       <div class="flex justify-between items-center w-full mt-10 px-16">
         <!-- Textos a la izquierda -->
         <div class="w-1/2 space-y-4">
@@ -257,11 +198,51 @@ onMounted(() => {
             <span class="text-Jed">"</span>
           </h1>
           <h1 class="font-jura text-3xl text-Jlue mb-12">Interior book design</h1>
-          <h1 class="font-jura text-xl text-Jhite text-right mb-16">“Relatos Tenebrosos” is a book that contains a collection of <br> eerie short stories written by Salvadoran author <br> Mario Martínez.</h1>
+          <h1 class="font-jura text-xl text-Jhite text-right mb-16">
+            “Relatos Tenebrosos” is a book that contains a collection of <br />
+            eerie short stories written by Salvadoran author <br />
+            Mario Martínez.
+          </h1>
           <h1 class="font-abhaya text-5xl text-Jed text-right m">Contribution</h1>
         </div>
       </div>
-      
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from "vue"
+
+/* === VIDEOS DEL CARRUSEL === */
+const videos = [
+  new URL('@/assets/videos/TrackMateVideo1.mp4', import.meta.url).href,
+  new URL('@/assets/videos/TrackMateVideo2.mp4', import.meta.url).href,
+]
+
+const currentVideo = ref(0)
+const nextVideo = () => {
+  currentVideo.value = (currentVideo.value + 1) % videos.length
+}
+
+/* === ANIMACIONES EN SCROLL === */
+onMounted(() => {
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+        } else {
+          // 👉 Esto hace que la animación se repita cada vez
+          entry.target.classList.remove("reveal-visible");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+});
+
+</script>

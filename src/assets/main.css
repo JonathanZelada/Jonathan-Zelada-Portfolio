@@ -81,7 +81,108 @@ html {
 
   --font-monoton: "Monoton", sans-serif;
   --font-jura: "Jura", sans-serif;
-  --font-ubuntu: "Ubuntu", sans-serif; 
+  --font-ubuntu: "Ubuntu", sans-serif;
   --font-abhaya: "Abhaya Libre", sans-serif;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tipos de animación */
+.fade-up    { transform: translateY(40px); }
+.fade-down  { transform: translateY(-40px); }
+.fade-left  { transform: translateX(-40px); }
+.fade-right { transform: translateX(40px); }
+.zoom-in    { transform: scale(0.8); }
+.zoom-out   { transform: scale(1.2); }
+.rotate     { transform: rotate(6deg); }
+
+/* Cuando es visible → eliminar transform */
+.reveal-visible.fade-up,
+.reveal-visible.fade-down,
+.reveal-visible.fade-left,
+.reveal-visible.fade-right,
+.reveal-visible.zoom-in,
+.reveal-visible.zoom-out,
+.reveal-visible.rotate {
+  transform: none !important;
+  opacity: 1;
+}
+
+.blur-in {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
+}
+.reveal-visible.blur-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+/* Slide suave diagonal */
+.diagonal-up {
+  opacity: 0;
+  transform: translateY(40px) translateX(-40px);
+}
+.reveal-visible.diagonal-up {
+  opacity: 1;
+  transform: none;
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide desde abajo con efecto “spring” */
+.spring-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.reveal-visible.spring-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Fade + rotate muy suave (muy premium) */
+.rotate-soft {
+  opacity: 0;
+  transform: translateY(30px) rotate(-3deg);
+}
+.reveal-visible.rotate-soft {
+  opacity: 1;
+  transform: none;
+  transition: all 0.8s ease-out;
+}
+
+/* Zoom-out elegante (ideal para imágenes grandes) */
+.zoom-soft {
+  opacity: 0;
+  transform: scale(1.12);
+}
+.reveal-visible.zoom-soft {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 1s ease;
+}
+
+/* Stagger effect (para listas) */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.stagger.reveal-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.stagger.reveal-visible > *:nth-child(1) { transition: 0.3s ease; }
+.stagger.reveal-visible > *:nth-child(2) { transition: 0.45s ease; }
+.stagger.reveal-visible > *:nth-child(3) { transition: 0.6s ease; }
+.stagger.reveal-visible > *:nth-child(4) { transition: 0.75s ease; }
